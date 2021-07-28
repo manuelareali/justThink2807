@@ -1,0 +1,65 @@
+@charset "ISO-8859-1";
+body, html {
+  height: 100%;
+}
+
+.bg-light {
+  /* The image used */
+  
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+
+  background-size: cover;
+}
+
+.h1, h1 {
+	padding:1% 0% 0% 0%;
+    font-size: 80px;
+    font-family: comics soon;
+}
+
+.h3, h3 {
+	padding:1% 0% 15% 0%;
+    font-size: 50px;
+    font-family: comics soon;
+}
+
+.h6, h6 {
+	padding:1% 0% 0% 0%;
+    font-size: 30px;
+}
+
+.ind{
+	width:250px;
+	color: blue;
+    text-decoration: underline;
+    font-size:20px;
+}
+
+.ind:hover{
+	color:yellow;
+}
+
+.btn-light{	
+	height:50px;
+	width:300px;
+    color: #fff;
+    background-color: red;
+    border-radius: 10px;
+    border: none;
+	outline:none;
+	color: #fff;
+	font-size: 22px;
+}
+
+
+.btn-light:hover
+{
+	cursor: pointer;
+	background:yellow;
+	color: #000;
+}
