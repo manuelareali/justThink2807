@@ -87,6 +87,7 @@ if (request.getParameter("contatta") != null) {
 
 			<div class="content text-center">
 			<table class="table table-hover">
+			<caption  style="visibility: hidden;">Eventi</caption>
 				<thead>
 					<tr>
 						<th scope="col">ID EVENTO</th>

@@ -104,6 +104,7 @@ if (request.getParameter("RITIRA DONAZIONE") != null) {
 
 				<div class="content text-center my-2">
 				<table class="table table-hover">
+				<caption  style="visibility: hidden;">Donazioni</caption>
 					<thead>
 						<tr>
 							<th scope="col">ID DONAZIONE</th>
