@@ -46,7 +46,7 @@ List<CoordinateMap> donazione = CercaCaritas.initMarkersDonazione();
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" />
 <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"></script>
+	src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
 <meta charset="ISO-8859-1">
 <title>MAPPA</title>
 <style>
@@ -211,7 +211,6 @@ List<CoordinateMap> donazione = CercaCaritas.initMarkersDonazione();
 	
 	<%
 	} else {
-	out.print("<b>" + parametroPromuovi + "</b>");
 	CercaCaritas.getInstance().promuoviEvento(Integer.parseInt(parametroPromuovi));
 	%>
 	<jsp:forward page="promuoviEventoMap.jsp" />
