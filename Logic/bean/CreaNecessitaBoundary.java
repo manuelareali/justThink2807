@@ -60,8 +60,8 @@ public class CreaNecessitaBoundary {
 		if (text[0].getText().isEmpty()) {
 			return false;
 		}
-		if (tipologia.getValue() == null && urgenza.getValue() == null) {
-			return false;
+		if (tipologia.getValue() != null && urgenza.getValue() != null) {
+			return true;
 		}
 		return true;
 	}
