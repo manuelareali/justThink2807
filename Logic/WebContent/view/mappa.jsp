@@ -200,7 +200,6 @@ List<CoordinateMap> donazione = CercaCaritas.initMarkersDonazione();
 
 	if (request.getParameter("Indicatore") != null) {
 		String parametroIndicatore = request.getParameter("indicatoreInput");
-		out.print("<b>" + parametroIndicatore + "</b>");
 		CercaCaritas.getInstance().initMarkerIndicatore(Integer.parseInt(parametroIndicatore));
 	}
 
@@ -224,7 +223,7 @@ List<CoordinateMap> donazione = CercaCaritas.initMarkersDonazione();
 		
 	<%
 	}else{	
-		out.print("<b>" + parametro + "</b>");
+
 		CercaCaritas.getInstance().creaDonazione(Integer.parseInt(parametro));
 	%>
 	<jsp:forward page="creaDonazioneMap.jsp" />
@@ -237,8 +236,7 @@ List<CoordinateMap> donazione = CercaCaritas.initMarkersDonazione();
 	%>
 	<%
 	}else{
-	System.out.println(parametroEvento);
-	out.print("<b>" + parametroEvento + "</b>");
+	
 	CercaCaritas.getInstance().partecipaEvento(Integer.parseInt(parametroEvento));
 	%>
 	<jsp:forward page="partecipaEventoVolontario.jsp" />
@@ -253,7 +251,7 @@ List<CoordinateMap> donazione = CercaCaritas.initMarkersDonazione();
 
 <%		
 	}else{
-	out.print("<b>" + parametroTurno + "</b>");
+	
 	CercaCaritas.getInstance().prenotaTurno(Integer.parseInt(parametroTurno));
 	%>
 	<jsp:forward page="prenotaTurnoMap.jsp" />
@@ -266,7 +264,7 @@ List<CoordinateMap> donazione = CercaCaritas.initMarkersDonazione();
 
 <%	
 	}else{
-	out.print("<b>" + parametroNecessita + "</b>");
+
 	CercaCaritas.getInstance().vediNecessita(Integer.parseInt(parametroNecessita));
 	%>
 	<jsp:forward page="bachecaCaritasMap.jsp" />
@@ -280,7 +278,7 @@ List<CoordinateMap> donazione = CercaCaritas.initMarkersDonazione();
 		%>
 		<%
 	}else{
-	out.print("<b>" + parametroPartecipa + "</b>");
+	
 	CercaCaritas.getInstance().partecipaEvento(Integer.parseInt(parametroPartecipa));
 	%>
 	<jsp:forward page="partecipaEventoVolontario.jsp" />
