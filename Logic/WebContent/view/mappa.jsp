@@ -200,13 +200,14 @@ List<CoordinateMap> donazione = CercaCaritas.initMarkersDonazione();
 
 	if (request.getParameter("Indicatore") != null) {
 		String parametroIndicatore = request.getParameter("indicatoreInput");
-		System.out.println(parametroIndicatore);
+		String encodedName = org.owasp.encoder.Encode.forHtml(parametroIndicatore);
 		out.print("<b>" + parametroIndicatore + "</b>");
 		CercaCaritas.getInstance().initMarkerIndicatore(Integer.parseInt(parametroIndicatore));
 	}
 
 	if (request.getParameter("promuoviEvento") != null) {
 		String parametroPromuovi = request.getParameter("promuoviInput");
+		 String encodedName = org.owasp.encoder.Encode.forHtml(parametroPromuovi)
 		if(parametroPromuovi == ""){			
 	%>
 	
