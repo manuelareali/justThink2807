@@ -4,11 +4,20 @@ import controller.CercaCaritasController;
 import controller.ShopHomeController;
 import controller.UserHomeController;
 import entity.CoordinateMap;
+import exception.MyException;
+import exception.Trigger;
+
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import bean.LoginBoundary;
 
 
 public class CercaCaritas {
 
+	private static Logger logger = LoggerFactory.getLogger(LoginBoundary.class.getName());
 	public enum MarkerType {
 		CARITAS, EVENTO, DONAZIONE, MAP
 	}
@@ -20,6 +29,9 @@ public class CercaCaritas {
 	private int idUser;
 	private String v = "Volontario";
 	private String n = "Negozio";
+	
+	private Trigger trigger;
+
 
 
 	private CercaCaritasController cercaController;
@@ -58,9 +70,17 @@ public class CercaCaritas {
 	
 	
 	public void promuoviEvento(int idCar) {
+		if(idCar != 0) {
 			promuoviEventoBoundary = promuoviEventoBoundary.getInstance();
 			promuoviEventoBoundary.loadFormBoundary(idCar, this.idUser);
+		}else {
+			try {
+				trigger.myTrigger();
+			} catch (MyException e) {
+				logger.error("Bisogna selezionare un marker");
+			}
 		}
+	}
 
 
 	public  void vediNecessita(int idCar) {
@@ -88,7 +108,7 @@ public class CercaCaritas {
 
 	public CercaCaritas(){
 		cercaController = new CercaCaritasController();
-
+		trigger = new Trigger();
 	}
 
 	public String trovaRuoloBean() {

@@ -64,12 +64,15 @@ private int userId;
     @FXML
     private Button logoutButton;
     
+    @FXML
+    private Button deleteButton;
 
     
     @FXML
     void deleteAccountButtonPressed(ActionEvent event) {
-    		//lo faremo presto
-    	this.userController.deleteAccount(userId);
+    	TransizionePagine pageSwitch = new TransizionePagine();
+    	pageSwitch.elimina(userId,deleteButton.getScene().getWindow());
+    	//this.userController.deleteAccount(userId);
     }
 
     @FXML

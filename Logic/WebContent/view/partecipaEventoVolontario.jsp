@@ -9,15 +9,9 @@
 			
 		}
 %>
-	<jsp:forward page="NewMap.jsp"/>
+	<jsp:forward page="mappa.jsp"/>
 <%
 	}
-if(request.getParameter("INDIETRO")!= null){
-%>
-<jsp:forward page="mappa.jsp" />
-<%	
-}
-
 %> 
     
 
@@ -60,10 +54,6 @@ if(request.getParameter("INDIETRO")!= null){
 
 				</div>
 				</div>
-				<div class="indietro">
-				<button class="btn btn-warning" type="submit" name="INDIETRO"
-					value="INDIETRO">Indietro</button>
-				</div>
 				
 				<div class="completa">
 				<button type="submit" class="btn btn-light" name= "PARTECIPA" value="PARTECIPA">Partecipa</button>
@@ -79,6 +69,11 @@ if(request.getParameter("INDIETRO")!= null){
 
 
 		</form>
+		<div class="indietro">
+				<a href= "mappa.jsp"><button class="btn btn-warning" type="submit" name="INDIETRO"
+					value="INDIETRO">Indietro</button></a>
+				</div>
+				
 	</div>
 </body>
 </html>

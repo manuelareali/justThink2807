@@ -63,10 +63,10 @@
 			<form action="log.jsp" name="my" method="POST">
 				<p>Email</p>
 				<input type="text" id="Username" name="Username"
-					placeholder="Enter username" autocomplete="off">
+					placeholder="Enter username" autocomplete="off" required>
 				<p>Password</p>
 				<input type="password" id="Password" name="Password"
-					placeholder="Enter Password" autocomplete="off">
+					placeholder="Enter Password" autocomplete="off" required>
 				<button type="submit" name="login" value="login">Login</button>
 				<a href="registrazione.jsp">Don't have an account?</a>
 

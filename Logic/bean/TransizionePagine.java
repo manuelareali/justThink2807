@@ -144,6 +144,38 @@ public class TransizionePagine {
 	}
 	
 	
-	
+	public void elimina(int idUser,Window stage) {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+
+		alert.setTitle("Delete");
+
+		alert.setHeaderText("Dovrai");
+
+		alert.setContentText("Sei sicuro di voler eliminare il tuo account?");
+
+		Optional<ButtonType> result = alert.showAndWait();
+
+		if (result.get() == ButtonType.OK) {
+
+			try {
+
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/Login_boundary.fxml"));
+
+				Parent root = loader.load();
+
+				Stage home = (Stage) stage;
+
+				home.setScene(new Scene(root, 600, 385));
+
+				home.show();
+
+			} catch (IOException e) {
+
+				logger.error(e.getMessage());
+
+			}
+
+		}
+	}
 	
 }

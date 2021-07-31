@@ -13,11 +13,6 @@ if (request.getParameter("creaTurno") != null) {
 }
 }
 
-if (request.getParameter("indietro") != null) {
-%>
-<jsp:forward page="gestisciTurniCaritas.jsp" />
-<%
-}
 %>
 
 
@@ -92,10 +87,7 @@ if (request.getParameter("indietro") != null) {
 
 			</div>
 
-			<div class="indietro">
-				<a href=""><button class="btn btn-warning" type="submit"
-						name="indietro" value="indietro">Indietro</button></a>
-			</div>
+			
 
 			<div class="completa">
 				<button type="submit" class="btn btn-light" name="creaTurno"
@@ -113,6 +105,11 @@ if (request.getParameter("indietro") != null) {
 		
 
 		</form>
+		
+		<div class="indietro">
+				<a href="gestisciTurniCaritas.jsp"><button class="btn btn-warning" type="submit"
+						name="indietro" value="indietro">Indietro</button></a>
+			</div>
 	</div>
 </body>
 </html>

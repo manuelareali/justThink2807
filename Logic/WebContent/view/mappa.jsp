@@ -4,6 +4,7 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
 <%@ page import="entity.CoordinateMap"%>
+<%@ page import="exception.Trigger"%>
 <%
 Class.forName("com.mysql.jdbc.Driver");
 %>
@@ -20,17 +21,13 @@ List<CoordinateMap> caritas = CercaCaritas.initMarkersCaritas();
 List<CoordinateMap> evento = CercaCaritas.initMarkersEvento();
 List<CoordinateMap> donazione = CercaCaritas.initMarkersDonazione();
 
-if(request.getParameter("INDIETRO")!= null){
-%>
-<jsp:forward page="homeVolontario.jsp" />
-<%	
-}
-
 %>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,7 +40,7 @@ if(request.getParameter("INDIETRO")!= null){
 	crossorigin="anonymous">
 
 
-<link rel="stylesheet" href="../css/maps.css" />
+<link rel="stylesheet" href="../css/map.css" />
 <meta name="viewport"
 	content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 <link rel="stylesheet"
@@ -69,6 +66,7 @@ if(request.getParameter("INDIETRO")!= null){
 	var hidden = false;
 	var tipoUtente = "";
 </script>
+
 <body>
 	
 	<form action="mappa.jsp" name="reg" method="POST">
@@ -103,9 +101,16 @@ if(request.getParameter("INDIETRO")!= null){
 		</div>
 
 		<div class="indietro">
-			<a href= "homeVolontario.jsp"><button class="btn btn-warning" type="submit" name="INDIETRO"
-					value="INDIETRO">Indietro</button></a>
+			<button class="btn btn-warning" type="submit" name="INDIETRO" value="INDIETRO">Indietro</button>
 		</div>
+		<% 
+		if(request.getParameter("INDIETRO") != null){
+			%>
+			<jsp:forward page="homeVolontario.jsp" />
+			<%
+		}
+			
+			%>
 		<script>
 			tipoUtente = "Volontario";
 		</script>
@@ -119,10 +124,10 @@ if(request.getParameter("INDIETRO")!= null){
 			style="visibility: hidden; position: absolute; top: 35%; left: 1%; font-weight: bold">Crea Donazione</button>
 		<button  class="btn  btn-light" id="necessita" name="necessita"
 			style="visibility: hidden; position: absolute; top: 42%; left: 1%;">Vedi Bacheca</button>
-		<button class="btn  btn-light" id="promuoviEvento" name="promuoviEvento"
+	
+		<button class="btn btn-light"   type= "submit"  id="promuoviEvento" name="promuoviEvento"
 			style="visibility: hidden; position: absolute; top: 49%; left: 1%;">Promuovi Evento</button>
-
-
+		
 		
 			<button class="btn btn-outline-primary" id= "Indicatore" name = "Indicatore" 
 				onClick="updateLatLng(document.getElementById('latitude').value,document.getElementById('longitude').value,1)" style="visibility: hidden; position: absolute; top: 35%; left: 1%;">Indicatore</button>
@@ -134,9 +139,16 @@ if(request.getParameter("INDIETRO")!= null){
 
 
 		<div class="indietro">
-			<a href= "homeNegozio.jsp"><button class="btn btn-warning" type="submit" name="INDIETRO"
-					value="INDIETRO">Indietro</button></a>
+			<button class="btn btn-warning" type="submit" name="INDIETRO" value="INDIETRO">Indietro</button>
 		</div>
+		<% 
+		if(request.getParameter("INDIETRO") != null){
+			%>
+			<jsp:forward page="homeNegozio.jsp" />
+			<%
+		}
+			
+			%>
 		<script>
 			tipoUtente = "Negozio";
 		</script>
@@ -145,8 +157,6 @@ if(request.getParameter("INDIETRO")!= null){
 		%>
 
 
-
-		<!-- <button id = "turno" name = "">PROMUOVI EVENTO</button>  -->
 
 
 		<div class="hidden">
@@ -162,7 +172,7 @@ if(request.getParameter("INDIETRO")!= null){
 
 	</form>
 
-	<div id="map"></div>
+	<div id="map"  style = "z-index:0;"></div>
 	<div class="check">
 		<div>
 			<input type="radio" class="gaucher" id="1" name="1"
@@ -187,6 +197,7 @@ if(request.getParameter("INDIETRO")!= null){
 		</div>
 	</div>
 <%
+
 	if (request.getParameter("Indicatore") != null) {
 		String parametroIndicatore = request.getParameter("indicatoreInput");
 		System.out.println(parametroIndicatore);
@@ -196,23 +207,38 @@ if(request.getParameter("INDIETRO")!= null){
 
 	if (request.getParameter("promuoviEvento") != null) {
 		String parametroPromuovi = request.getParameter("promuoviInput");
-		System.out.println(parametroPromuovi);
-		out.print("<b>" + parametroPromuovi + "</b>");
-		CercaCaritas.getInstance().promuoviEvento(Integer.parseInt(parametroPromuovi));
+		if(parametroPromuovi == ""){			
+	%>
+	
+	<%
+	} else {
+	out.print("<b>" + parametroPromuovi + "</b>");
+	CercaCaritas.getInstance().promuoviEvento(Integer.parseInt(parametroPromuovi));
 	%>
 	<jsp:forward page="promuoviEventoMap.jsp" />
 	<%
+		}
 	}
 	if (request.getParameter("donazione") != null) {
 	String parametro = request.getParameter("donazioneInput");
-	out.print("<b>" + parametro + "</b>");
-	CercaCaritas.getInstance().creaDonazione(Integer.parseInt(parametro));
+	if(parametro == ""){
+ 	%>
+		
+	<%
+	}else{	
+		out.print("<b>" + parametro + "</b>");
+		CercaCaritas.getInstance().creaDonazione(Integer.parseInt(parametro));
 	%>
 	<jsp:forward page="creaDonazioneMap.jsp" />
 	<%
+		}
 	}
 	if (request.getParameter("evento") != null) {
 	String parametroEvento = request.getParameter("eventoInput");
+	if(parametroEvento == ""){
+	%>
+	<%
+	}else{
 	System.out.println(parametroEvento);
 	out.print("<b>" + parametroEvento + "</b>");
 	CercaCaritas.getInstance().partecipaEvento(Integer.parseInt(parametroEvento));
@@ -220,33 +246,49 @@ if(request.getParameter("INDIETRO")!= null){
 	<jsp:forward page="partecipaEventoVolontario.jsp" />
 	<%
 	}
+	}
 
 	if (request.getParameter("turno") != null) {
 	String parametroTurno = request.getParameter("turnoInput");
+	if (parametroTurno == ""){
+%>
+
+<%		
+	}else{
 	out.print("<b>" + parametroTurno + "</b>");
 	CercaCaritas.getInstance().prenotaTurno(Integer.parseInt(parametroTurno));
 	%>
 	<jsp:forward page="prenotaTurnoMap.jsp" />
 	<%
-	}
+	}}
 	if (request.getParameter("necessita") != null) {
 	String parametroNecessita = request.getParameter("necessitaInput");
+	if (parametroNecessita == ""){
+%>
+
+<%	
+	}else{
 	out.print("<b>" + parametroNecessita + "</b>");
 	CercaCaritas.getInstance().vediNecessita(Integer.parseInt(parametroNecessita));
 	%>
 	<jsp:forward page="bachecaCaritasMap.jsp" />
 	<%
 	}
+	}
 
 	if (request.getParameter("partecipaEvento") != null) {
 	String parametroPartecipa = request.getParameter("partecipaInput");
+	if (parametroPartecipa == ""){
+		%>
+		<%
+	}else{
 	out.print("<b>" + parametroPartecipa + "</b>");
 	CercaCaritas.getInstance().partecipaEvento(Integer.parseInt(parametroPartecipa));
 	%>
 	<jsp:forward page="partecipaEventoVolontario.jsp" />
 	<%
 	}
-
+	}
 	String jsMarker = "";
 	for (int i = 0; i < caritas.size(); i++) {
 	String myY = caritas.get(i).getLongitudine();
@@ -386,6 +428,7 @@ if(request.getParameter("INDIETRO")!= null){
 		function checkRadio(name) {
 			hidden = !hidden;
 			if (tipoUtente == "Volontario") {
+				alert("Effettua un doppio click sul marker corrispondente alla posizione scelta per effettuare l'azione voluta")
 				if (hidden) {
 					if (name == "1") {
 
@@ -434,6 +477,7 @@ if(request.getParameter("INDIETRO")!= null){
 				}
 			}
 			else if (tipoUtente == "Negozio") {
+				alert("Effettua un doppio click sul marker corrispondente alla posizione scelta per effettuare l'azione voluta")
 				if (hidden) {
 					if (name == "1") {
 						document.getElementById('donazione').style.visibility = 'visible';
@@ -481,7 +525,7 @@ if(request.getParameter("INDIETRO")!= null){
 
 
 	</script>
-	<!-- Optional JavaScript; choose one of the two! -->
+
 
 			<!-- Option 1: Bootstrap Bundle with Popper -->
 			<script

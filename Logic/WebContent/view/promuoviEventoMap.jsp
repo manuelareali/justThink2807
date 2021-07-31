@@ -11,7 +11,7 @@ if (request.getParameter("CONFERMA") != null) {
 		if (PromuoviEventoBoundary.getInstance().confermaPressed(request.getParameter("NomeEvento"), "Vestiti",
 		request.getParameter("NoteEvento"), request.getParameter("PrezzoEvento")) == true) {
 %>
-<jsp:forward page="NewMap.jsp" />
+<jsp:forward page="mappa.jsp" />
 <%
 }
 }
@@ -20,7 +20,7 @@ else if (request.getParameter("Cibo").equals("Cibo")) {
 if (PromuoviEventoBoundary.getInstance().confermaPressed(request.getParameter("NomeEvento"), "Cibo",
 		request.getParameter("NoteEvento"), request.getParameter("PrezzoEvento")) == true) {
 %>
-<jsp:forward page="NewMap.jsp" />
+<jsp:forward page="mappa.jsp" />
 <%
 }
 } else {
@@ -98,10 +98,7 @@ if (PromuoviEventoBoundary.getInstance().confermaPressed(request.getParameter("N
 			<button class="btn btn-light" type="submit"   name ="CONFERMA" value = "CONFERMA">Conferma</button>
 			</div>
 			
-			<div class = "indietro">
-			<button class="btn btn-warning" type="submit" name="indietro"
-					value="indietro">Indietro</button>
-					</div>
+			
 			<!-- Optional JavaScript; choose one of the two! -->
 
 			<!-- Option 1: Bootstrap Bundle with Popper -->
@@ -112,6 +109,10 @@ if (PromuoviEventoBoundary.getInstance().confermaPressed(request.getParameter("N
 
 
 		</form>
+		<div class = "indietro">
+			<a href= "mappa.jsp"><button class="btn btn-warning" type="submit" name="indietro"
+					value="indietro">Indietro</button></a>
+					</div>
 	</div>
 </body>
 </html>

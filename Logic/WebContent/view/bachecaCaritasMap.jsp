@@ -12,7 +12,7 @@ Class.forName("com.mysql.jdbc.Driver");
 if (request.getParameter("CONTATTA CARITAS") != null) {
 	BachecaBoundary.getInstance().creaEmail();
 %>
-<jsp:forward page="contattaCaritasMap.jsp" />
+<jsp:forward page="contattaCaritas.jsp" />
 <%
 }
 
@@ -22,11 +22,7 @@ BachecaBoundary.getInstance().creaDonazione();
 <jsp:forward page="creaDonazioneMap.jsp" />
 <%
 }
-if(request.getParameter("INDIETRO") != null){
-	%>
-	<jsp:forward page="mappa.jsp" />
-	<%
-}
+
 %>
 
 
@@ -74,10 +70,6 @@ if(request.getParameter("INDIETRO") != null){
 
 			</div>
 
-			<div class="indietro">
-				<button class="btn btn-warning" type="submit" name="INDIETRO"
-					value="INDIETRO">Indietro</button>
-			</div>
 
 
 			<table class="table">
@@ -134,6 +126,12 @@ if(request.getParameter("INDIETRO") != null){
 			
 
 		</form>
+		
+		
+			<div class = "indietro">
+			<a href= "mappa.jsp"><button class="btn btn-warning" type="submit" name="INDIETRO"
+					value="INDIETRO">Indietro</button></a>
+			</div>
 	</div>
 </body>
 </html>

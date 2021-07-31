@@ -18,7 +18,7 @@ if (request.getParameter("indietro") != null) {
 
 if (request.getParameter("contatta") != null) {
 %>
-<jsp:forward page="contattaCaritasMap.jsp" />
+<jsp:forward page="contattaNegozio.jsp" />
 <%
 }
 if (request.getParameter("cancella") != null) {
