@@ -46,7 +46,7 @@ List<CoordinateMap> donazione = CercaCaritas.initMarkersDonazione();
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" />
 <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js  integrity="sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC""></script>
+	src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"></script>
 <meta charset="ISO-8859-1">
 <title>MAPPA</title>
 <style>
